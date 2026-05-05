@@ -13,6 +13,8 @@ const styles = `
     --mist: #E8E4DD;
     --slate: #4A4A4A;
     --soft: #F0EDE8;
+    --green: #2D6A4F;
+    --green-light: #EAF4EF;
   }
 
   body { background: var(--cream); font-family: 'DM Sans', sans-serif; }
@@ -26,6 +28,7 @@ const styles = `
     padding: 2rem 1rem 4rem;
   }
 
+  /* Brand strip */
   .brand-strip {
     width: 100%;
     max-width: 640px;
@@ -37,7 +40,7 @@ const styles = `
 
   .brand-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--ink);
     letter-spacing: -0.02em;
@@ -45,15 +48,145 @@ const styles = `
 
   .brand-name span { color: var(--rust); }
 
-  .issue-tag {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .brand-tagline {
+    font-size: 0.72rem;
     color: var(--slate);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* About Me Card */
+  .about-card {
+    width: 100%;
+    max-width: 640px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--mist);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rust), var(--gold));
+  }
+
+  .about-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1A1A2E, #C84B31);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .about-name-block { flex: 1; }
+
+  .about-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .about-title {
+    font-size: 0.78rem;
+    color: var(--rust);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .about-inst {
+    font-size: 0.75rem;
+    color: var(--slate);
+    font-weight: 300;
+    margin-top: 0.1rem;
+  }
+
+  .about-body {
+    font-size: 0.92rem;
+    color: var(--slate);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-body strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .assurance-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .assurance-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--slate);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .assurance-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .divider-line {
+    width: 100%;
+    height: 1px;
     background: var(--mist);
-    padding: 4px 10px;
+    margin: 1.25rem 0;
+  }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--soft);
+    border: 1px solid var(--mist);
     border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    color: var(--slate);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
   }
 
   /* Track selector */
@@ -64,19 +197,19 @@ const styles = `
 
   .track-headline {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--ink);
-    line-height: 1.25;
-    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.03em;
   }
 
   .track-sub {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--slate);
     line-height: 1.7;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 300;
   }
 
@@ -84,7 +217,7 @@ const styles = `
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .track-card {
@@ -100,7 +233,7 @@ const styles = `
   .track-card:hover {
     border-color: var(--rust);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(200, 75, 49, 0.08);
+    box-shadow: 0 8px 24px rgba(200,75,49,0.08);
   }
 
   .track-card.selected {
@@ -108,32 +241,28 @@ const styles = `
     background: #FDF5F3;
   }
 
-  .track-icon {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
+  .track-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
 
   .track-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--ink);
     margin-bottom: 0.4rem;
   }
 
   .track-desc {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     color: var(--slate);
     line-height: 1.6;
     font-weight: 300;
   }
 
-  /* Progress bar */
+  /* Progress */
   .progress-wrap {
     width: 100%;
     max-width: 640px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
   }
 
   .progress-meta {
@@ -144,18 +273,14 @@ const styles = `
   }
 
   .progress-label {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--slate);
   }
 
-  .progress-count {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--rust);
-  }
+  .progress-count { font-size: 0.72rem; font-weight: 600; color: var(--rust); }
 
   .progress-track {
     height: 3px;
@@ -166,9 +291,9 @@ const styles = `
 
   .progress-fill {
     height: 100%;
-    background: var(--rust);
+    background: linear-gradient(90deg, var(--rust), var(--gold));
     border-radius: 100px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
   }
 
   /* Question card */
@@ -200,12 +325,11 @@ const styles = `
     flex: 1;
     height: 1px;
     background: var(--mist);
-    display: block;
   }
 
   .q-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--ink);
     line-height: 1.45;
@@ -222,12 +346,8 @@ const styles = `
     font-weight: 300;
   }
 
-  /* Option types */
-  .options-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
+  /* Options */
+  .options-list { display: flex; flex-direction: column; gap: 0.6rem; }
 
   .opt {
     display: flex;
@@ -239,19 +359,15 @@ const styles = `
     cursor: pointer;
     transition: all 0.15s ease;
     background: var(--soft);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--ink);
     font-weight: 400;
     user-select: none;
+    line-height: 1.4;
   }
 
   .opt:hover { border-color: var(--rust); background: #FDF5F3; }
-
-  .opt.selected {
-    border-color: var(--rust);
-    background: #FDF5F3;
-    font-weight: 500;
-  }
+  .opt.selected { border-color: var(--rust); background: #FDF5F3; font-weight: 500; }
 
   .opt-dot {
     width: 16px;
@@ -265,44 +381,11 @@ const styles = `
     justify-content: center;
   }
 
-  .opt.selected .opt-dot {
-    border-color: var(--rust);
-    background: var(--rust);
-  }
-
-  .opt-dot-inner {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #fff;
-  }
-
-  /* Checkbox variant */
-  .opt-box {
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-    border: 2px solid var(--mist);
-    flex-shrink: 0;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: #fff;
-  }
-
-  .opt.selected .opt-box {
-    border-color: var(--rust);
-    background: var(--rust);
-  }
+  .opt.selected .opt-dot { border-color: var(--rust); background: var(--rust); }
+  .opt-dot-inner { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
 
   /* Chips */
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
   .chip {
     padding: 0.45rem 0.9rem;
@@ -331,16 +414,16 @@ const styles = `
     color: var(--ink);
     background: var(--soft);
     resize: none;
-    min-height: 80px;
+    min-height: 90px;
     transition: border-color 0.15s;
     outline: none;
     line-height: 1.6;
   }
 
   .open-input:focus { border-color: var(--rust); background: #fff; }
-  .open-input::placeholder { color: #aaa; font-style: italic; }
+  .open-input::placeholder { color: #bbb; font-style: italic; }
 
-  /* Nav buttons */
+  /* Nav */
   .nav-row {
     width: 100%;
     max-width: 640px;
@@ -397,33 +480,34 @@ const styles = `
   .btn-start:hover { background: #B03D25; transform: translateY(-1px); }
   .btn-start:disabled { background: var(--mist); color: #aaa; cursor: not-allowed; transform: none; }
 
-  /* Thank you screen */
+  /* Thank you */
   .thankyou {
     width: 100%;
     max-width: 640px;
     text-align: center;
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem;
     background: #fff;
     border-radius: 16px;
     border: 1px solid var(--mist);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
   }
 
-  .ty-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+  .ty-icon { font-size: 2.75rem; margin-bottom: 1rem; display: block; }
 
   .ty-headline {
     font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--ink);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
     letter-spacing: -0.03em;
   }
 
   .ty-sub {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--slate);
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
     font-weight: 300;
   }
 
@@ -436,7 +520,7 @@ const styles = `
   }
 
   .summary-title {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -445,7 +529,7 @@ const styles = `
   }
 
   .summary-item {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--slate);
     line-height: 1.8;
     display: flex;
@@ -454,18 +538,28 @@ const styles = `
 
   .summary-item + .summary-item { margin-top: 0.3rem; }
 
-  .divider-line {
+  .ty-divider {
     width: 40px;
     height: 2px;
     background: var(--rust);
-    margin: 1.5rem auto;
+    margin: 1.25rem auto;
     border-radius: 100px;
+  }
+
+  .dr-sign {
+    font-size: 0.82rem;
+    color: var(--slate);
+    font-style: italic;
+    margin-top: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
   }
 
   @media (max-width: 480px) {
     .track-cards { grid-template-columns: 1fr; }
-    .track-headline { font-size: 1.6rem; }
-    .q-text { font-size: 1.05rem; }
+    .track-headline { font-size: 1.35rem; }
+    .q-text { font-size: 1rem; }
+    .about-card { padding: 1.5rem; }
   }
 `;
 
@@ -474,13 +568,14 @@ const D2C_QUESTIONS = [
     id: "d1",
     type: "radio",
     text: "How do you currently set prices for your products?",
-    hint: "Pick the one that describes you most honestly.",
+    hint: "Pick the one that describes you most honestly — there is no wrong answer here.",
     options: [
       "Cost + fixed margin (cost × 2 or 3)",
       "I watch what competitors charge and match or beat them",
-      "Gut feel — I know my market",
+      "Gut feel — I know my market well",
       "A mix of all three, changes every time",
-      "I honestly don't have a clear method"
+      "Having a team to work on pricing decisions",
+      "I honestly don't have a clear method yet"
     ]
   },
   {
@@ -498,18 +593,18 @@ const D2C_QUESTIONS = [
   {
     id: "d3",
     type: "chips",
-    text: "Which platforms do you sell on?",
+    text: "Which platforms do you currently sell on?",
     hint: "Select all that apply.",
-    options: ["Amazon", "Flipkart", "Meesho", "Myntra", "Nykaa", "ONDC", "Own Website", "Offline / Retail"]
-  },
+    options: ["Amazon", "Flipkart", "Meesho", "Myntra", "Nykaa", "ONDC", "Own Website", "Offline / Retail", "others"],
+ },
   {
     id: "d4",
     type: "radio",
-    text: "Which pricing challenge costs you the most right now?",
+    text: "Which pricing challenge costs your business the most right now?",
     options: [
       "Losing the Amazon Buy Box to cheaper sellers",
-      "Missing festival sale eligibility (Diwali, Big Billion Day)",
-      "My margins disappear after platform fees and shipping",
+      "Missing festival sale eligibility (Diwali, Big Billion Day etc.)",
+      "My margins disappear after platform fees and shipping costs and return orders",
       "Competitors undercut me and I don't know when it happens",
       "I price the same everywhere and don't know if that's right"
     ]
@@ -518,34 +613,34 @@ const D2C_QUESTIONS = [
     id: "d5",
     type: "radio",
     text: "Have you ever lost revenue because of a pricing mistake?",
-    hint: "Be honest — this is the most important question.",
+    hint: "This is the most important question. Your honest answer helps the research significantly.",
     options: [
-      "Yes — and I know roughly how much (₹50K+)",
+      "Yes — and I know roughly how much (₹50,000 or more)",
       "Yes — but I couldn't calculate the exact damage",
-      "Probably yes, but I've never measured it",
+      "Probably yes, but I have never measured it",
       "No, I don't think so",
-      "I'm not sure — I don't track this"
+      "I am not sure — I don't track this closely"
     ]
   },
   {
     id: "d6",
     type: "radio",
-    text: "If a tool automatically protected your margins and fixed your prices in real time — what would you pay monthly?",
-    hint: "Assume it saves you at least 8–12% additional revenue.",
+    text: "If a tool automatically protected your margins and recommended the right price in real time — what would you pay monthly?",
+    hint: "Assume it saves you at least 8–12% additional revenue on your current sales.",
     options: [
-      "Nothing — I'd need to see proof first",
-      "₹2,000 – ₹5,000 / month",
-      "₹5,000 – ₹15,000 / month",
-      "₹15,000 – ₹30,000 / month",
-      "More — if the ROI is clear"
+      "Nothing — I would need to see proof first",
+      "₹2,000 – ₹5,000 per month",
+      "₹5,000 – ₹15,000 per month",
+      "₹15,000 – ₹30,000 per month",
+      "More — if the return on investment is clearly demonstrated"
     ]
   },
   {
     id: "d7",
     type: "open",
-    text: "In one sentence — what is your biggest pricing headache right now?",
-    hint: "No right or wrong answer. Your exact words matter more than polished language.",
-    placeholder: "e.g. I never know if I'm priced right for Diwali until it's too late..."
+    text: "In your own words — what is your single biggest pricing headache right now?",
+    hint: "One sentence is enough. Your exact words matter more than polished language. There is truly no wrong answer.",
+    placeholder: "e.g. I never know if I am priced right for Diwali until it is already too late..."
   }
 ];
 
@@ -553,13 +648,13 @@ const B2B_QUESTIONS = [
   {
     id: "b1",
     type: "radio",
-    text: "What is your role at the platform?",
+    text: "What is your primary role at the platform or organisation?",
     options: [
       "Founder / CEO",
       "Product or Growth Lead",
-      "Seller Success / Partnerships",
-      "Technology / CTO",
-      "Other decision-maker"
+      "Seller Success / Partnerships Manager",
+      "Technology Lead / CTO",
+      "Other decision-making role"
     ]
   },
   {
@@ -567,7 +662,7 @@ const B2B_QUESTIONS = [
     type: "radio",
     text: "What is the most common pricing complaint you hear from sellers on your platform?",
     options: [
-      "\"I don't know why my Buy Box / Best Seller rank dropped\"",
+      "\"I don't know why my ranking or visibility dropped\"",
       "\"My competitors are always cheaper and I can't react fast enough\"",
       "\"Platform fees are eating my margins and I didn't see it coming\"",
       "\"I missed a sale window because my price history wasn't right\"",
@@ -577,70 +672,66 @@ const B2B_QUESTIONS = [
   {
     id: "b3",
     type: "radio",
-    text: "What percentage of your sellers do you estimate struggle with pricing decisions?",
+    text: "What percentage of your sellers do you estimate genuinely struggle with pricing decisions?",
     options: [
       "Less than 20%",
-      "20–40%",
-      "40–60%",
-      "60–80%",
-      "More than 80% — it's a universal problem"
+      "20 – 40%",
+      "40 – 60%",
+      "60 – 80%",
+      "More than 80% — it is a universal problem on our platform"
     ]
   },
   {
     id: "b4",
     type: "chips",
-    text: "What pricing intelligence do you currently offer sellers?",
+    text: "What pricing support or intelligence do you currently offer sellers?",
     hint: "Select all that apply.",
     options: [
       "Basic price comparison reports",
       "Competitor price alerts",
       "Dynamic pricing recommendations",
-      "Festival / sale window guidance",
+      "Festival and sale window guidance",
       "Margin calculators",
-      "Nothing yet"
+      "Nothing structured yet"
     ]
   },
   {
     id: "b5",
     type: "radio",
-    text: "Would you consider white-labelling an AI pricing tool to offer your sellers as a premium feature?",
+    text: "Would your platform consider offering AI-powered pricing recommendations as a premium feature for sellers?",
     options: [
-      "Yes — we've been looking for something like this",
-      "Possibly — depends on the commercial model",
-      "Only if sellers explicitly ask for it",
-      "No — we prefer building in-house",
-      "Not right now but open in 12–18 months"
+      "Yes — we have been looking for something exactly like this",
+      "Possibly — it depends on the commercial model and integration effort",
+      "Only if sellers explicitly and repeatedly ask for it",
+      "No — we prefer building such capabilities in-house",
+      "Not right now but we would be open to it in 12–18 months"
     ]
   },
   {
     id: "b6",
     type: "radio",
-    text: "What would make you commit to a pricing intelligence partnership?",
+    text: "What would make you commit to a pricing intelligence partnership for your sellers?",
     options: [
-      "Proven uplift data — show me ₹ results, not features",
-      "White-label flexibility — it must look like our product",
-      "API-first — plug into our existing seller dashboard",
-      "Risk-free pilot — 60 days with 10 sellers before we commit",
-      "All of the above honestly"
+      "Proven uplift data — show me revenue results, not just features",
+      "White-label flexibility(rebrand pre-built technology as their own) — it must feel like our own product",
+      "API-first integration — plugs into our existing seller dashboard",
+      "A risk-free pilot — 60 days with a small group of sellers first",
+      "Honestly, all of the above would be needed"
     ]
   },
   {
     id: "b7",
     type: "open",
-    text: "What is the single pricing feature your sellers ask for most — that you haven't built yet?",
-    hint: "One sentence is enough. Your exact words matter.",
-    placeholder: "e.g. Sellers keep asking for automatic price matching that doesn't kill their margins..."
+    text: "What is the single pricing feature your sellers ask for most — that you have not built yet?",
+    hint: "One sentence is more than enough. Your exact words are what this research needs.",
+    placeholder: "e.g. Sellers keep asking for automatic price matching that doesn't destroy their margins..."
   }
 ];
 
-function OptionItem({ opt, selected, onSelect, type }) {
+function OptionItem({ opt, selected, onSelect }) {
   return (
     <div className={`opt${selected ? " selected" : ""}`} onClick={() => onSelect(opt)}>
-      {type === "checkbox" ? (
-        <span className="opt-box">{selected ? "✓" : ""}</span>
-      ) : (
-        <span className="opt-dot">{selected && <span className="opt-dot-inner" />}</span>
-      )}
+      <span className="opt-dot">{selected && <span className="opt-dot-inner" />}</span>
       {opt}
     </div>
   );
@@ -655,12 +746,14 @@ export default function App() {
   const questions = track === "d2c" ? D2C_QUESTIONS : B2B_QUESTIONS;
   const current = questions[step];
   const total = questions.length;
-  const progress = ((step) / total) * 100;
+  const progress = (step / total) * 100;
 
   const handleAnswer = (qid, val, type) => {
     if (type === "chips") {
       const prev = answers[qid] || [];
-      const next = prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val];
+      const next = prev.includes(val)
+        ? prev.filter(v => v !== val)
+        : [...prev, val];
       setAnswers(a => ({ ...a, [qid]: next }));
     } else {
       setAnswers(a => ({ ...a, [qid]: val }));
@@ -668,7 +761,8 @@ export default function App() {
   };
 
   const canProceed = () => {
-    const a = answers[current.id];
+    const a = answers[current?.id];
+    if (!current) return false;
     if (current.type === "open") return a && a.trim().length > 3;
     if (current.type === "chips") return a && a.length > 0;
     return !!a;
@@ -690,24 +784,73 @@ export default function App() {
 
   const painSummary = () => {
     const key = track === "d2c" ? answers["d4"] : answers["b2"];
-    return key || "Pain identified — follow up for details.";
+    return key || "Recorded — follow-up conversation scheduled.";
   };
 
   return (
     <>
       <style>{styles}</style>
       <div className="shell">
+
+        {/* Brand strip */}
         <div className="brand-strip">
-          <div className="brand-name">Price<span>IQ</span></div>
-          <div className="issue-tag">Idea Validation · 2025</div>
+          <div>
+            <div className="brand-name">Bid<span>Optimize</span></div>
+            <div className="brand-tagline">Pricing Intelligence Research</div>
+          </div>
         </div>
+
+        {/* About Dr. Revathi — always visible at top */}
+        {!done && (
+          <div className="about-card">
+            <div className="about-header">
+              <div className="about-avatar">Dr.</div>
+              <div className="about-name-block">
+                <div className="about-name">Dr. Revathi</div>
+                <div className="about-title">Ph.D in Mathematics</div>
+                <div className="about-inst">National Institute of Technology, Tiruchirappalli (NIT Trichy)</div>
+              </div>
+            </div>
+
+            <div className="about-body">
+              Hello, and thank you for being here.
+
+              <br /><br />
+
+               I am researching,<strong>how can data-driven pricing recommendations help e-commerce platforms and D2C founders make better, more confident pricing decisions?</strong>
+
+              <br /><br />
+
+              I am a researcher trying to understand the real pricing challenges that people like you face every day — so that whatever I build is genuinely useful, not just theoretically interesting.
+
+              <br /><br />
+
+              Your answers — honest and unpolished — are far more valuable to this research than perfect ones. <strong>There are no right or wrong answers here.</strong>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="time-badge">
+              <span>⏱</span> Takes under 3 minutes — 7 questions total
+            </div>
+
+            <div className="assurance-row">
+              <div className="assurance-item">
+                <div className="assurance-dot">✓</div>
+                <span>Your responses are completely confidential, No sales pitch, no follow-up marketing - only a personal thank you from me</span>
+              </div>
+              
+              
+            </div>
+          </div>
+        )}
 
         {/* Track selection */}
         {!track && !done && (
           <div className="track-screen">
-            <h1 className="track-headline">Help us understand your pricing world.</h1>
+            <h2 className="track-headline">Which best describes you?</h2>
             <p className="track-sub">
-              7 quick questions. No right or wrong answers. Your honest response shapes what we build next. Takes under 3 minutes.
+              Choose your role below. The questions will be tailored specifically to your experience — no irrelevant questions.
             </p>
             <div className="track-cards">
               <div
@@ -715,24 +858,25 @@ export default function App() {
                 onClick={() => setTrack("d2c")}
               >
                 <span className="track-icon">🏪</span>
-                <div className="track-title">I run a D2C brand</div>
-                <div className="track-desc">I sell products directly to consumers — on Amazon, Flipkart, my own site, or other platforms.</div>
+                <div className="track-title">I am a manufacturer or dealer of products </div>
+                <div className="track-desc">I sell products directly to consumers — on Amazon, Flipkart, my own website, or other platforms.</div>
               </div>
               <div
                 className={`track-card${track === "b2b" ? " selected" : ""}`}
                 onClick={() => setTrack("b2b")}
               >
                 <span className="track-icon">🏗️</span>
-                <div className="track-title">I work at an e-commerce platform</div>
-                <div className="track-desc">I work at a marketplace, logistics platform, or tool that serves D2C sellers.</div>
+                <div className="track-title">I work at an E-commerce Platform</div>
+                <div className="track-desc">I work at a marketplace, logistics company, or a tool that serves (direct to consumer)D2C sellers at scale.</div>
               </div>
             </div>
             <button
               className="btn-start"
               disabled={!track}
-              onClick={() => {}}
             >
-              {track ? `Start as ${track === "d2c" ? "D2C Founder →" : "Platform Partner →"}` : "Select your role above to begin"}
+              {track
+                ? `Begin as ${track === "d2c" ? "D2C Founder →" : "Platform Partner →"}`
+                : "Please select your role above to begin"}
             </button>
           </div>
         )}
@@ -743,9 +887,9 @@ export default function App() {
             <div className="progress-wrap">
               <div className="progress-meta">
                 <span className="progress-label">
-                  {track === "d2c" ? "D2C Founder Track" : "Platform Partner Track"}
+                  {track === "d2c" ? "D2C Founder" : "Platform Partner"}
                 </span>
-                <span className="progress-count">Q{step + 1} of {total}</span>
+                <span className="progress-count">Question {step + 1} of {total}</span>
               </div>
               <div className="progress-track">
                 <div className="progress-fill" style={{ width: `${progress}%` }} />
@@ -765,7 +909,6 @@ export default function App() {
                       opt={opt}
                       selected={answers[current.id] === opt}
                       onSelect={v => handleAnswer(current.id, v, "radio")}
-                      type="radio"
                     />
                   ))}
                 </div>
@@ -810,49 +953,57 @@ export default function App() {
           </>
         )}
 
-        {/* Thank you */}
+        {/* Thank you screen */}
         {done && (
           <div className="thankyou">
             <span className="ty-icon">🙏</span>
-            <h2 className="ty-headline">Thank you, genuinely.</h2>
-            <div className="divider-line" />
+            <h2 className="ty-headline">Thank you sincerely.</h2>
+            <div className="ty-divider" />
             <p className="ty-sub">
-              You just helped shape what PriceIQ becomes. Every answer you gave is a signal we'll use to build something that actually solves your pricing pain — not something we imagined in a boardroom.
+              Every answer you gave contributes directly to research that I hope will make a real difference for Indian D2C businesses. Your time and honesty are genuinely appreciated — not as a formality, but as the foundation this work is built on.
             </p>
 
             <div className="summary-box">
-              <div className="summary-title">What we heard from you</div>
+              <div className="summary-title">What you shared with me today</div>
               <div className="summary-item">
                 <span>📍</span>
-                <span>Track: {track === "d2c" ? "D2C Brand Founder" : "Platform / Marketplace Partner"}</span>
+                <span>{track === "d2c" ? "D2C Brand Founder perspective" : "E-commerce Platform perspective"}</span>
               </div>
               <div className="summary-item">
                 <span>🎯</span>
-                <span>Biggest pain: {painSummary()}</span>
+                <span>Primary challenge noted: {painSummary()}</span>
               </div>
               {track === "d2c" && answers["d5"] && (
                 <div className="summary-item">
                   <span>💸</span>
-                  <span>Revenue impact acknowledged: {answers["d5"]}</span>
+                  <span>Revenue impact: {answers["d5"]}</span>
                 </div>
               )}
               {track === "d2c" && answers["d6"] && (
                 <div className="summary-item">
                   <span>💰</span>
-                  <span>Willingness to pay: {answers["d6"]}</span>
+                  <span>Value assessment: {answers["d6"]}</span>
                 </div>
               )}
             </div>
 
-            <p style={{ fontSize: "0.82rem", color: "var(--slate)", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-              We'll be in touch personally — not a mass email. If you're open to a 20-minute follow-up conversation, just reply to the message we sent you on LinkedIn.
+            <p className="dr-sign">
+              — Dr. Revathi, Ph.D Mathematics<br />
+              National Institute of Technology, Tiruchirappalli<br /><br />
+              I will personally review your response and share a summary of findings with you once the research reaches a meaningful stage. If you are open to a short follow-up conversation, please reply to the message that brought you here.
             </p>
 
-            <button className="btn-start" onClick={restart} style={{ background: "var(--ink)" }}>
-              Start over with a different track
+            <br />
+            <button
+              className="btn-start"
+              onClick={restart}
+              style={{ background: "var(--ink)", marginTop: "0.5rem" }}
+            >
+              Complete as a different role
             </button>
           </div>
         )}
+
       </div>
     </>
   );
